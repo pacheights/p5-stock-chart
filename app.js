@@ -7,6 +7,7 @@ var graph;
 var ticker;
 var timeSeries;
 var data;
+var dataJSON;
 // Documentation: https://www.alphavantage.co/documentation/
 
 // Setting the ticker to blank string
@@ -20,7 +21,7 @@ function setup() {
     // Initializing the canvas and the graph
     createCanvas(screenWidth,screenHeight);
     background(25);
-    graph = new Graph();
+    graph = new Graph(data, dataJSON);
     graph.display();
 
     // Initializing the search bar
@@ -48,8 +49,20 @@ function draw() {
 function getData() {
     // Save the ticker value to prevent unneccesary API calls
     ticker = textField.value().toUpperCase();
-    console.log(ticker);
     data = new Data(ticker);
+    dataJSON = loadJSON(data.apiCall, gotData);
 
+    // Loading Screen
+    noStroke();
+    fill(200, 200, 200);
+    textSize(72);
+    text("Loading",(screenWidth/2.5),(screenHeight/2));
 
+    // Recreates graph when API is called
+    function gotData() {
+        data.parseData(dataJSON);
+        searchButton.remove();
+        textField.remove();
+        setup();
+    }
 }

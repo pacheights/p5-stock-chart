@@ -1,17 +1,24 @@
-function Graph() {
+function Graph(data) {
     this.textSize = innerHeight / 48;
     this.textColor = 230;
     this.font = "verdana";
     this.grid;
-    this.axis;
+    this.labels;
 
     this.display = function() {
         // Text Parameters
         textFont(this.font);
         textSize(this.textSize);
 
-        this.grid();
-        this.axis();
+        // Display on startup
+        if (data === undefined) {
+            this.grid();
+        }
+        // Display after user selects a ticker
+        else {
+            this.grid();
+            this.labels();
+        }
     }
 
     this.grid = function() {
@@ -40,21 +47,23 @@ function Graph() {
              floor(innerWidth * 0.9), floor(innerHeight * 0.9));
     }
 
-    this.axis = function() {
+    this.labels = function() {
         // X-axis text
         noStroke();
         fill(this.textColor);
+
+        // Counting down the days
+        count = 13;
         for (var i = 0.18; i < 0.8; i += 0.1) {
-            text("Nov 1" + floor(i * 10), floor(innerWidth * i),
+            text(data.dates[count], floor(innerWidth * i),
                  floor(innerHeight * 0.93));
+            count -= 2;
         }
 
         // Y-axis text
         for (var i = 0.208; i < 0.8; i += 0.1) {
-            text(parseFloat("2" + 0.5 ** i).toFixed(2), floor(innerWidth * 0.91),
-                 floor(innerHeight * i));
+            text("yes", floor(innerWidth * 0.91),
+            floor(innerHeight * i));
         }
     }
-
-
 }
