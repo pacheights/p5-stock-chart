@@ -5,7 +5,6 @@ var textField;
 var searchButton;
 var graph;
 var ticker;
-var timeSeries;
 var data;
 var dataJSON;
 // Documentation: https://www.alphavantage.co/documentation/
