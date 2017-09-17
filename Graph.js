@@ -104,28 +104,18 @@ function Graph(data) {
 
             // Drawing open/close vertical line
             if (direction > 0) {
-                // Vertical candle open and close line
-                stroke("#2dc40b");
-                line(floor(x_coor), open,
-                     floor(x_coor), close);
-
-                // Horizonatal candle open and close lines
-                line(floor(x_coor + (innerWidth * 0.02)), close,
-                     floor(x_coor), close);
-                line(floor(x_coor), open,
-                     floor(x_coor - (innerWidth * 0.02)), open);
+                // Positive candle open and close box
+                fill("#2dc40b");
+                stroke("black");
+                rectMode(CENTER);
+                rect(x_coor, (open+close)/2, innerWidth/40, open-close);
             }
             else {
-                // Vertical candle open and close line
-                stroke("#890e05");
-                line(floor(x_coor), open,
-                     floor(x_coor), close);
-
-                // Horizonatal candle open and close lines
-                line(floor(x_coor - (innerWidth * 0.024)), open,
-                     floor(x_coor), open);
-                line(floor(x_coor), close,
-                     floor(x_coor + (innerWidth * 0.024)), close);
+                // Negative candle open and close box
+                fill("#890e05");
+                stroke("black");
+                rectMode(CENTER);
+                rect(x_coor, (open+close)/2, innerWidth/40, open-close);
             }
             count--;
         }

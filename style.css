@@ -43,3 +43,8 @@ button:active {
 button:focus {
     outline: none;
 }
+
+p {
+    color: white;
+    font-size = 40px;
+}
