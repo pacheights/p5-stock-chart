@@ -7,14 +7,11 @@ var graph;
 var ticker;
 var data;
 var dataJSON;
-var mobileText;
-// Documentation: https://www.alphavantage.co/documentation/
 
 // Setting the ticker to blank string
 ticker = "";
 
 function setup() {
-
     // Initializing the screen's width and height
     screenWidth = innerWidth;
     screenHeight = innerHeight;
@@ -35,14 +32,6 @@ function setup() {
     // When the user enters a new stock ticker
     searchButton.mousePressed(getData)
     textField.changed(getData);
-
-    // No mobile support
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-        mobileText = createP("Unfortunately there is no mobile support for this app." +
-                " Please use a computer to view this webpage.");
-        searchButton.remove();
-        textField.remove();
-    }
 }
 
 function draw() {

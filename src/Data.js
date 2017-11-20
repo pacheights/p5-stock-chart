@@ -91,19 +91,5 @@ function Data(ticker) {
                 this.priceRange = [Math.floor(this.lowest - (rangeDiv)),
                                    Math.floor(this.lowest + (rangeDiv * 6))];
             }
-
-        // VOLUME
-        // this.volLow = Number.MAX_VALUE;
-        // this.volHigh = Number.MIN_VALUE;
-        // for (var i = 0; i < 15; i++) {
-        //     if (parseFloat(dataJSON[this.timeSeries][this.dateKeys[i]]["5. volume"]) > this.volHigh) {
-        //         this.volHigh = parseFloat(dataJSON[this.timeSeries][this.dateKeys[i]]["5. volume"]);
-        //     }
-        //
-        //     if (parseFloat(dataJSON[this.timeSeries][this.dateKeys[i]]["5. volume"]) < this.volLow) {
-        //         this.volLow = parseFloat(dataJSON[this.timeSeries][this.dateKeys[i]]["5. volume"]);
-        //     }
-        // }
-        // this.volRange = [this.volLow, this.volHigh];
     }
 }
